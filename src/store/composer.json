@@ -33,14 +33,14 @@
         }
     ],
     "require": {
-        "php": ">=8.2",
+        "php": ">=7.4",
         "ext-fileinfo": "*",
-        "psr/log": "^3.0",
+        "psr/log": "^1.0|^2.0|^3.0",
         "symfony/ai-platform": "@dev",
-        "symfony/clock": "^7.3|^8.0",
-        "symfony/http-client": "^7.3|^8.0",
+        "symfony/clock": "^5.4|^6.4|^7.3",
+        "symfony/http-client": "^5.4|^6.4|^7.3",
         "symfony/polyfill-php83": "^1.32",
-        "symfony/uid": "^7.3|^8.0"
+        "symfony/uid": "^5.4|^6.4|^7.3"
     },
     "require-dev": {
         "codewithkyrian/chromadb-php": "^0.2.1 || ^0.3 || ^0.4",
@@ -48,12 +48,12 @@
         "mongodb/mongodb": "^1.21 || ^2.0",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
-        "phpunit/phpunit": "^11.5",
+        "phpunit/phpunit": "^9.5",
         "probots-io/pinecone-php": "^1.0",
-        "symfony/cache": "^6.4 || ^7.1",
-        "symfony/console": "^6.4 || ^7.1",
-        "symfony/dependency-injection": "^6.4 || ^7.1",
-        "symfony/dom-crawler": "^6.4 || ^7.1"
+        "symfony/cache": "^5.4|^6.4|^7.3",
+        "symfony/console": "^5.4|^6.4|^7.3",
+        "symfony/dependency-injection": "^5.4|^6.4|^7.3",
+        "symfony/dom-crawler": "^5.4|^6.4|^7.3"
     },
     "conflict": {
         "mongodb/mongodb": "<1.21"

@@ -6,11 +6,11 @@
         "dev"
     ],
     "require-dev": {
-        "php": ">=8.2",
+        "php": ">=7.4",
         "php-cs-fixer/shim": "^3.75",
         "phpstan/phpstan-strict-rules": "^2.0",
-        "symfony/filesystem": "^7.3|^8.0",
-        "symfony/finder": "^7.3|^8.0"
+        "symfony/filesystem": "^5.4|^6.4|^7.3",
+        "symfony/finder": "^5.4|^6.4|^7.3"
     },
     "minimum-stability": "dev",
     "config": {
