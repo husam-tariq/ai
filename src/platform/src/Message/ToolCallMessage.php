@@ -24,12 +24,25 @@ final class ToolCallMessage implements MessageInterface
 {
     use MetadataAwareTrait;
 
-    private readonly AbstractUid&TimeBasedUidInterface $id;
+    /**
+     * @var AbstractUid&TimeBasedUidInterface
+     */
+    private $id;
 
-    public function __construct(
-        private readonly ToolCall $toolCall,
-        private readonly string $content,
-    ) {
+    /**
+     * @var ToolCall
+     */
+    private $toolCall;
+
+    /**
+     * @var string
+     */
+    private $content;
+
+    public function __construct(ToolCall $toolCall, string $content)
+    {
+        $this->toolCall = $toolCall;
+        $this->content = $content;
         $this->id = Uuid::v7();
     }
 
@@ -38,7 +51,10 @@ final class ToolCallMessage implements MessageInterface
         return Role::ToolCall();
     }
 
-    public function getId(): AbstractUid&TimeBasedUidInterface
+    /**
+     * @return AbstractUid&TimeBasedUidInterface
+     */
+    public function getId()
     {
         return $this->id;
     }

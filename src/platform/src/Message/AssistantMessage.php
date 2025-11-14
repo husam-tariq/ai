@@ -24,15 +24,29 @@ final class AssistantMessage implements MessageInterface
 {
     use MetadataAwareTrait;
 
-    private readonly AbstractUid&TimeBasedUidInterface $id;
+    /**
+     * @var AbstractUid&TimeBasedUidInterface
+     */
+    private $id;
 
     /**
-     * @param ?ToolCall[] $toolCalls
+     * @var string|null
      */
-    public function __construct(
-        private ?string $content = null,
-        private ?array $toolCalls = null,
-    ) {
+    private $content;
+
+    /**
+     * @var ToolCall[]|null
+     */
+    private $toolCalls;
+
+    /**
+     * @param string|null $content
+     * @param ToolCall[]|null $toolCalls
+     */
+    public function __construct(?string $content = null, ?array $toolCalls = null)
+    {
+        $this->content = $content;
+        $this->toolCalls = $toolCalls;
         $this->id = Uuid::v7();
     }
 
@@ -41,7 +55,10 @@ final class AssistantMessage implements MessageInterface
         return Role::Assistant();
     }
 
-    public function getId(): AbstractUid&TimeBasedUidInterface
+    /**
+     * @return AbstractUid&TimeBasedUidInterface
+     */
+    public function getId()
     {
         return $this->id;
     }
@@ -52,7 +69,7 @@ final class AssistantMessage implements MessageInterface
     }
 
     /**
-     * @return ?ToolCall[]
+     * @return ToolCall[]|null
      */
     public function getToolCalls(): ?array
     {

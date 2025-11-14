@@ -23,11 +23,19 @@ final class SystemMessage implements MessageInterface
 {
     use MetadataAwareTrait;
 
-    private readonly AbstractUid&TimeBasedUidInterface $id;
+    /**
+     * @var AbstractUid&TimeBasedUidInterface
+     */
+    private $id;
 
-    public function __construct(
-        private readonly string $content,
-    ) {
+    /**
+     * @var string
+     */
+    private $content;
+
+    public function __construct(string $content)
+    {
+        $this->content = $content;
         $this->id = Uuid::v7();
     }
 
@@ -36,7 +44,10 @@ final class SystemMessage implements MessageInterface
         return Role::System();
     }
 
-    public function getId(): AbstractUid&TimeBasedUidInterface
+    /**
+     * @return AbstractUid&TimeBasedUidInterface
+     */
+    public function getId()
     {
         return $this->id;
     }
