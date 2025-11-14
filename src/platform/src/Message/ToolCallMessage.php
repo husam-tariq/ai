@@ -35,7 +35,7 @@ final class ToolCallMessage implements MessageInterface
 
     public function getRole(): Role
     {
-        return Role::ToolCall;
+        return Role::ToolCall();
     }
 
     public function getId(): AbstractUid&TimeBasedUidInterface

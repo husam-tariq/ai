@@ -55,14 +55,14 @@ final class AssistantMessageNormalizerTest extends TestCase
     }
 
     /**
-     * @return iterable<string, array{AssistantMessage, array{role: Role::Assistant, tool_calls: list<array{type: string, function: array{name: string, arguments: mixed}}>}}>
+     * @return iterable<string, array{AssistantMessage, array{role: string, tool_calls: list<array{type: string, function: array{name: string, arguments: mixed}}>}}>
      */
     public static function normalizeDataProvider(): iterable
     {
         yield 'assistant message without tool calls' => [
             new AssistantMessage('Hello'),
             [
-                'role' => Role::Assistant,
+                'role' => 'assistant',
                 'content' => 'Hello',
                 'tool_calls' => [],
             ],
@@ -71,7 +71,7 @@ final class AssistantMessageNormalizerTest extends TestCase
         yield 'assistant message with tool calls' => [
             new AssistantMessage(toolCalls: [new ToolCall('id1', 'function1', ['param' => 'value'])]),
             [
-                'role' => Role::Assistant,
+                'role' => 'assistant',
                 'content' => '',
                 'tool_calls' => [
                     [
@@ -88,7 +88,7 @@ final class AssistantMessageNormalizerTest extends TestCase
         yield 'assistant message with empty arguments' => [
             new AssistantMessage(toolCalls: [new ToolCall('id1', 'function1', [])]),
             [
-                'role' => Role::Assistant,
+                'role' => 'assistant',
                 'content' => '',
                 'tool_calls' => [
                     [
@@ -108,7 +108,7 @@ final class AssistantMessageNormalizerTest extends TestCase
                 new ToolCall('id2', 'function2', ['param2' => 'value2']),
             ]),
             [
-                'role' => Role::Assistant,
+                'role' => 'assistant',
                 'content' => '',
                 'tool_calls' => [
                     [
@@ -138,7 +138,7 @@ final class AssistantMessageNormalizerTest extends TestCase
                 ]
             ),
             [
-                'role' => Role::Assistant,
+                'role' => 'assistant',
                 'content' => 'Hello',
                 'tool_calls' => [
                     [

@@ -33,7 +33,7 @@ final class SystemMessage implements MessageInterface
 
     public function getRole(): Role
     {
-        return Role::System;
+        return Role::System();
     }
 
     public function getId(): AbstractUid&TimeBasedUidInterface

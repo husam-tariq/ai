@@ -38,7 +38,7 @@ final class AssistantMessage implements MessageInterface
 
     public function getRole(): Role
     {
-        return Role::Assistant;
+        return Role::Assistant();
     }
 
     public function getId(): AbstractUid&TimeBasedUidInterface

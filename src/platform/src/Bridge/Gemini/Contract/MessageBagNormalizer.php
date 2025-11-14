@@ -49,7 +49,7 @@ final class MessageBagNormalizer extends ModelContractNormalizer implements Norm
 
         foreach ($data->withoutSystemMessage()->getMessages() as $message) {
             $array['contents'][] = [
-                'role' => $message->getRole()->equals(Role::Assistant) ? 'model' : 'user',
+                'role' => $message->getRole()->equals(Role::Assistant()) ? 'model' : 'user',
                 'parts' => $this->normalizer->normalize($message, $format, $context),
             ];
         }
