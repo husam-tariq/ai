@@ -27,7 +27,7 @@ final class SystemMessageTest extends TestCase
     {
         $message = new SystemMessage('foo');
 
-        $this->assertSame(Role::System, $message->getRole());
+        $this->assertTrue($message->getRole()->equals(Role::System()));
         $this->assertSame('foo', $message->getContent());
     }
 

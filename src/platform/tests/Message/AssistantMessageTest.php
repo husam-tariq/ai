@@ -26,7 +26,7 @@ final class AssistantMessageTest extends TestCase
 
     public function testTheRoleOfTheMessageIsAsExpected()
     {
-        $this->assertSame(Role::Assistant, (new AssistantMessage())->getRole());
+        $this->assertTrue((new AssistantMessage())->getRole()->equals(Role::Assistant()));
     }
 
     public function testConstructionWithoutToolCallIsPossible()

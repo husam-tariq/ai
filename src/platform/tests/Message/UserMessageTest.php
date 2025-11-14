@@ -30,7 +30,7 @@ final class UserMessageTest extends TestCase
     {
         $obj = new UserMessage(new Text('foo'));
 
-        $this->assertSame(Role::User, $obj->getRole());
+        $this->assertTrue($obj->getRole()->equals(Role::User()));
         $this->assertCount(1, $obj->getContent());
         $this->assertInstanceOf(Text::class, $obj->getContent()[0]);
         $this->assertSame('foo', $obj->getContent()[0]->getText());

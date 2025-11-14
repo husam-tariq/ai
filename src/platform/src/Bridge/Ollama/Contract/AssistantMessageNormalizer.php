@@ -31,7 +31,7 @@ final class AssistantMessageNormalizer extends ModelContractNormalizer implement
      * @param AssistantMessage $data
      *
      * @return array{
-     *     role: Role::Assistant,
+     *     role: string,
      *     content: string,
      *     tool_calls: list<array{
      *         type: 'function',
@@ -45,7 +45,7 @@ final class AssistantMessageNormalizer extends ModelContractNormalizer implement
     public function normalize(mixed $data, ?string $format = null, array $context = []): array
     {
         return [
-            'role' => Role::Assistant,
+            'role' => Role::Assistant()->value,
             'content' => $data->getContent() ?? '',
             'tool_calls' => array_values(array_map(function (ToolCall $message): array {
                 return [

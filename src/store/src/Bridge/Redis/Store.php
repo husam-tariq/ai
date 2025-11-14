@@ -25,12 +25,21 @@ use Symfony\Component\Uid\Uuid;
  */
 class Store implements ManagedStoreInterface, StoreInterface
 {
+    private $redis;
+    private $indexName;
+    private $keyPrefix;
+    private $distance;
+
     public function __construct(
-        private readonly \Redis $redis,
-        private readonly string $indexName,
-        private readonly string $keyPrefix = 'vector:',
-        private readonly Distance $distance = Distance::Cosine,
+        \Redis $redis,
+        string $indexName,
+        string $keyPrefix = 'vector:',
+        ?Distance $distance = null
     ) {
+        $this->redis = $redis;
+        $this->indexName = $indexName;
+        $this->keyPrefix = $keyPrefix;
+        $this->distance = $distance ?? Distance::Cosine();
     }
 
     /**

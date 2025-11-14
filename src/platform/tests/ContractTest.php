@@ -178,7 +178,7 @@ final class ContractTest extends TestCase
 
             public function getRole(): Role
             {
-                return Role::User;
+                return Role::User();
             }
 
             public function getId(): AbstractUid&TimeBasedUidInterface

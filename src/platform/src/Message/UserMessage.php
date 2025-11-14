@@ -31,23 +31,28 @@ final class UserMessage implements MessageInterface
     /**
      * @var ContentInterface[]
      */
-    private readonly array $content;
+    private $content;
 
-    private readonly AbstractUid&TimeBasedUidInterface $id;
+    /**
+     * @var AbstractUid&TimeBasedUidInterface
+     */
+    private $id;
 
-    public function __construct(
-        ContentInterface ...$content,
-    ) {
+    public function __construct(ContentInterface ...$content)
+    {
         $this->content = $content;
         $this->id = Uuid::v7();
     }
 
     public function getRole(): Role
     {
-        return Role::User;
+        return Role::User();
     }
 
-    public function getId(): AbstractUid&TimeBasedUidInterface
+    /**
+     * @return AbstractUid&TimeBasedUidInterface
+     */
+    public function getId()
     {
         return $this->id;
     }
